@@ -24,6 +24,7 @@ class ForkedDaapedControl(hass.Hass):
         self.log("ForkedDaapedControl is running")
         global hassio
         hassio = self
+        # tell appdaemon what to listen for to control groups and individual speakers
         self.listen_state(set_group,"input_select.speaker_group")
         self.listen_state(speaker_toggle, "input_boolean")
         self.listen_state(speaker_toggle, "sensor.multipi_office", attribute = "all")
@@ -34,6 +35,7 @@ class ForkedDaapedControl(hass.Hass):
 class ForkedDaapedPlaylist(hass.Hass):
 
     def initialize(self):
+        # listen for change of playlist
         self.listen_state(set_playlist, "input_select.multipi_source")
 
 ############################################################################################
