@@ -1,2 +1,2 @@
 # hassio-forked-daapd
-scripts to control forked-daapd with home assistant
+scripts to control forked-daapd (https://github.com/ejurgensen/forked-daapd) with home assistant
