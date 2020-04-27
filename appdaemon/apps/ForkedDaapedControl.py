@@ -33,12 +33,27 @@ class ForkedDaapedPlaylist(hass.Hass):
         self.listen_state(set_playlist, "input_select.multipi_source")
 
 ############################################################################################
+
+def search(search_where, search_for, search_field, return_what):
+    i = 0
+    match = False
+    for thing in search_where:
+        test = search_where[i][search_field].lower()
+        if test == search_for.lower():
+            match = True
+            returned = search_where[i][return_what]
+        i += 1
+    if match:
+        return(returned)
+    else:
+        return(-1)
+# Function to get available playlists from forked-daapd
 def get_playlists():
     global available_playlists
     playlists = requests.get(base_url+'/api/library/playlists').json()
     available_playlists = playlists.get('items')
 
-# future expansion
+# Function to play new playlist in forked-daapd
 def set_playlist(entity, attribute, old, new, kwargs):
     print(f"Playlist changed from {old} to {new}")
     # get playlists
@@ -55,25 +70,13 @@ def set_playlist(entity, attribute, old, new, kwargs):
         print(f"Something went wrong add adding {new} to queue")
     requests.put(base_url+'/api/player/play')
 
+# Function to get available outputs from forked-daapd
 def get_outputs():
     global available_outputs
     outputs = requests.get(base_url+'/api/outputs').json()
     available_outputs = outputs.get('outputs')
 
-def search(search_where, search_for, search_field, return_what):
-    i = 0
-    match = False
-    for thing in search_where:
-        test = search_where[i][search_field].lower()
-        if test == search_for.lower():
-            match = True
-            returned = search_where[i][return_what]
-        i += 1
-    if match:
-        return(returned)
-    else:
-        return(-1)
-
+# set group speakers on, off, volume according to JSON
 def set_group_speakers(group, group_name, avialable_outputs):
     # loop through group and turn things on
     for speaker in group:
