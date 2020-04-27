@@ -53,6 +53,7 @@ def search(search_where, search_for, search_field, return_what):
         return(returned)
     else:
         return(-1)
+    
 # Function to get available playlists from forked-daapd
 def get_playlists():
     global available_playlists
