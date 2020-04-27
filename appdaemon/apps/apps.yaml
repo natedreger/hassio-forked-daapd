@@ -1,1 +1,12 @@
+---
+ForkedDaapedControl:
+  module: ForkedDaapedControl
+  class: ForkedDaapedControl
 
+ForkedDaapedPlaylist:
+  module: ForkedDaapedControl
+  class: ForkedDaapedPlaylist
+
+our_automation_name:       #any name you like.
+  module: some_app         #that was the name we used for our py file
+  class: your_class_name   #and this was the name from our class
