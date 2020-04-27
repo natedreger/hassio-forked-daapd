@@ -5,15 +5,19 @@ import json
 import sys
 
 path_to_group_file = "/config/forked-daapd/groups/"
-base_url = "http://192.168.0.101:3689"
-spkr_switch_prfx = "input_boolean."
-spkr_switch_sffx = "_speaker"
+base_url = "http://192.168.0.101:3689"     # you're forked-daapd ip
+
+# prefix and suffix so we can tell hassio what to control later
+
+spkr_switch_prfx = "input_boolean."        # could be a switch if prefered
+spkr_switch_sffx = "_speaker"              # example input_boolean.office_speaker
 spkr_lvl_prfx = "input_number."
-spkr_lvl_sffx = "_speaker_level"
+spkr_lvl_sffx = "_speaker_level"           # example input_number.office_speaker
+# build empty dicts to fill later
 outputs = {}
 current_group = {}
 
-
+# appdaemon classes for hassio
 class ForkedDaapedControl(hass.Hass):
 
     def initialize(self):
