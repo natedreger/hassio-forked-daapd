@@ -1,0 +1,28 @@
+{
+    "Everywhere": [
+        {
+            "id": "79443243916245",
+            "name": "Bedroom",
+            "volume": "60",
+            "selected": true
+        },
+        {
+            "id": "268520133856209",
+            "name": "iPhone ",
+            "volume": "15",
+            "selected": true
+        },
+        {
+            "id": "24929657546",
+            "name": "LivingRoom",
+            "volume": "35",
+            "selected": true
+        },
+        {
+            "id": "245746237793578",
+            "name": "Office",
+            "volume": "60",
+            "selected": true
+        }
+    ]
+}
